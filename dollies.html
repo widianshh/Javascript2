@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POPMART</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Styling for header and navigation */
+        header {
+            background-color: #f690da;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for gallery grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .gallery .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery .card .info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .gallery .card .info h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .gallery .card .info p {
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        /* Styling for the footer */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color:#f690da;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section with Navigation -->
+    <header>
+        <h1>Welcome to POP MART</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section with Photo Gallery -->
+    <main>
+        <section class="gallery">
+            <div class="card" onclick="showProductInfo('SUSUMI', 29.99, true, 10)">
+                <img src="https://lzd-img-global.slatic.net/g/p/db2ddbc927744ce2131901898f3e0c66.jpg_720x720q80.jpg" alt="SUSUMI">
+                <div class="info">
+                    <h3>SUSUMI</h3>
+                    <p>POP MART SUSUMI Magic House Series Blind Box Action Figure.</p>
+                    <p class="price">$29.99</p>
+                    <p class="stock">Stock: 10</p>
+                </div>
+            </div>
+            <div class="card" onclick="showProductInfo('Sweat Bean', 25.99, false, 5)">
+                <img src="https://my-test-11.slatic.net/p/b11ed2bfcfc6ce767882dac96a47855d.jpg" alt="Sweat Bean">
+                <div class="info">
+                    <h3>Sweat Bean</h3>
+                    <p>POP MART Sweet Bean Growth Illustration Series Figures Blind Box.</p>
+                    <p class="price">$25.99</p>
+                    <p class="stock">Stock: 5</p>
+                </div>
+            </div>
+            <div class="card" onclick="showProductInfo('Miniko', 28.99, true, 8)">
+                <img src="https://ae01.alicdn.com/kf/Sdddbace7afef44ec8d8a936429952c09t/USER-X-POPMART-Minico-My-Little-Princes-Series-Blind-Box-Toy-Doll-Cute-Anime-Action-Figure.jpg" alt="Miniko">
+                <div class="info">
+                    <h3>Miniko</h3>
+                    <p>USER X POPMART Minico My Little Princes Series Blind Box Toy Doll Cute.</p>
+                    <p class="price">$28.99</p>
+                    <p class="stock">Stock: 8</p>
+                </div>
+            </div>
+            <div class="card" onclick="showProductInfo('DIMOO', 27.99, false, 4)">
+                <img src="https://lzd-img-global.slatic.net/g/ff/kf/Sce6219f3889c4e629d1e7fa74a805532F.jpg_720x720q80.jpg" alt="DIMOO">
+                <div class="info">
+                    <h3>DIMOO</h3>
+                    <p>POP MART DIMOO Dating Series Blind Box Action Figure.</p>
+                    <p class="price">$27.99</p>
+                    <p class="stock">Stock: 4</p>
+                </div>
+            </div>
+            <div class="card" onclick="showProductInfo('SKULLPANDA', 31.99, true, 9)">
+                <img src="https://img.lazcdn.com/g/p/43ea280f47be47932ffaab100dab5dcc.jpg_720x720q80.jpg" alt="SKULLPANDA">
+                <div class="info">
+                    <h3>SKULLPANDA</h3>
+                    <p>POP MART SKULLPANDA The Warmth Series Blind Box Figure.</p>
+                    <p class="price">$31.99</p>
+                    <p class="stock">Stock: 9</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Array of objects to represent products
+        const products = [
+            { name: "SUSUMI", price: 29.99, featured: true },
+            { name: "Sweat Bean", price: 25.99, featured: false },
+            { name: "Miniko", price: 28.99, featured: true },
+            { name: "DIMOO", price: 27.99, featured: false },
+            { name: "SKULLPANDA", price: 31.99, featured: true }
+        ];
+
+        function showProductInfo(name, price, isFeatured, stock) {
+            // String
+            const message = "Product Information:";
+            console.log(message);
+
+            // Number
+            console.log("Product Name:", name);  // Tipe data string
+            console.log("Product Price:", price); // Tipe data number
+            console.log("Product Stock:", stock); // Tipe data number
+
+            // Boolean
+            console.log("Is Featured:", isFeatured); // Tipe data boolean
+
+            // Array
+            const featuredProducts = products.filter(product => product.featured);
+            console.log("Featured Products Array:", featuredProducts); // Menampilkan array produk unggulan
+
+            // Object
+            const productInfo = { name: name, price: price, isFeatured: isFeatured };
+            console.log("Product Info Object:", productInfo); // Menampilkan object produk
+
+            // Logical Operator
+            if (price < 30 && isFeatured) {
+                console.log(`Featured product under $30: ${name}`);
+            }
+
+            // Equality Comparison
+            if (name === "SUSUMI") {
+                console.log("Product is SUSUMI");
+            } else if (name !== "SUSUMI") {
+                console.log("Product is not SUSUMI");
+            }
+
+            // Check stock availability
+            if (stock > 0) {
+                console.log("Product is in stock");
+            } else {
+                console.log("Product is out of stock");
+            }
+        }
+
+        // Logika tambahan untuk menampilkan semua produk di console
+        console.log("All Products Array:", products);
+        
+    </script>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Created by <a href="mailto:widiasw258@gmail.com">Widianingsih</a></p>
+        <p>&copy; 2024 POP MART. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
